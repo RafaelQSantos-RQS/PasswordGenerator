@@ -14,6 +14,7 @@ public class PasswordFrame extends JFrame{
     private JButton copiarButton;
     private JLabel passwordLabel;
     private JPanel mainPanel;
+    private JButton newPasswordButton;
 
     public PasswordFrame() {
         this.setContentPane(mainPanel);
@@ -30,6 +31,12 @@ public class PasswordFrame extends JFrame{
                 String textCopied = passwordLabel.getText();
                 StringSelection data = new StringSelection(textCopied);
                 Toolkit.getDefaultToolkit().getSystemClipboard().setContents(data,data);
+            }
+        });
+        newPasswordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setPasswordLabel();
             }
         });
     }

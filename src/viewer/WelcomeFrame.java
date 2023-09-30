@@ -33,6 +33,7 @@ public class WelcomeFrame extends JFrame{
         creditsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new CreditsFrame();
             }
         });
 
