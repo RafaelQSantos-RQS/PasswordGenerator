@@ -1,5 +1,7 @@
 package viewer;
 
+import model.Password;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -18,8 +20,8 @@ public class PasswordFrame extends JFrame{
 
     public PasswordFrame() {
         this.setContentPane(mainPanel);
-        this.setTitle("Passowrd Generator");
-        this.setMinimumSize(new Dimension(300,0));
+        this.setTitle("Password Generator");
+        this.setMinimumSize(new Dimension(0,0));
         this.pack();
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -42,6 +44,12 @@ public class PasswordFrame extends JFrame{
     }
 
     private void setPasswordLabel() {
-        this.passwordLabel.setText(generatePassword());
+        String strTamanho = JOptionPane.showInputDialog(null,"Insira o tamanho da senha:","Tamanho da Senha",JOptionPane.WARNING_MESSAGE);
+        try{
+            int tamanho = Integer.parseInt(strTamanho);
+            this.passwordLabel.setText(Password.generatePassword(tamanho));
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null,"Erro ao ler o número: " + e,"Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
